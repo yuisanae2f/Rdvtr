@@ -2,23 +2,31 @@ cmake_minimum_required(VERSION 3.20)
 enable_testing()
 include(cmake/Core.cmake)
 
-project(libRudventure VERSION 0.0.0 LANGUAGES C CXX)
+project(Rdvtr VERSION 0.0.0 LANGUAGES C CXX)
 option(PROJECTREFGET "" OFF)
 
-if(NOT TARGET ${PROJECT_NAME})
-    message(${PROJECT_NAME})
-    if(PROJECTREFGET)
-        execute_process(
-            COMMAND 
-            git clone 
-            https://github.com/yuisanae2f/Rudventure 
-            ${ae2f_ProjRoot}/RudventureRef
-            RESULT_VARIABLE result
-        )
-    endif()
+if(PROJECTREFGET)
+    execute_process(
+        COMMAND 
+        git clone 
+        https://github.com/yuisanae2f/Rudventure 
+        ${ae2f_ProjRoot}/RudventureRef
+        RESULT_VARIABLE result
+    )
 endif()
 
-project(Rudventure VERSION 0.0.0 LANGUAGES C CXX)
 if(NOT TARGET ${PROJECT_NAME})
-    message(${PROJECT_NAME})
+    ae2f_CoreLibFetch(ae2f Core main)
+    message(${PROJECT_NAME})    
+    ae2f_CoreLibTent(
+        Rdvtr ${ae2f_LIBPREFIX} include Rdvtr
+        "include/Rdvtr/Ansi.h"
+        "src/Ansi.c"
+        
+        "include/Rdvtr/Rndr.h"
+        "src/Rndr.cpp"
+    )
+    target_link_libraries(Rdvtr PUBLIC Core)
+
+    ae2f_CoreTestTent(Rdvtr test)
 endif()
