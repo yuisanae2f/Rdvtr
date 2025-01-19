@@ -16,9 +16,6 @@ if(PROJECTREFGET)
 endif()
 
 if(NOT TARGET ${PROJECT_NAME})
-    ae2f_CoreLibFetch(ae2f Core main)
-    ae2f_CoreLibFetch(ae2f Ds main)
-    
     message(${PROJECT_NAME})
     ae2f_CoreLibTent(
         Rdvtr ${ae2f_LIBPREFIX} include Rdvtr
@@ -29,8 +26,13 @@ if(NOT TARGET ${PROJECT_NAME})
         "include/Rdvtr/Rndr.hpp"
         "src/Rndr.c"
     )
+    ae2f_CoreLibFetch(ae2f Core main)
+    ae2f_CoreLibFetch(ae2f Ds main)
+    ae2f_CoreLibFetch(ae2f Bmp main)
+    
     target_link_libraries(Rdvtr PUBLIC Core)
     target_link_libraries(Rdvtr PUBLIC Ds)
+    target_link_libraries(Rdvtr PUBLIC Bmp)
 
     find_package(SDL2)
     if(${SDL2_FOUND})

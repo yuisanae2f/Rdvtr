@@ -22,7 +22,6 @@ typedef struct Rdvtr_RndrQueryEl {
     size_t Pad;
 } Rdvtr_RndrQueryEl;
 
-
 /// @brief
 /// # It does not own the memory. 
 /// List type for Rndr Query.
@@ -78,5 +77,13 @@ size_t Rdvtr_RndrGen(
     const char* in,
     Rdvtr_RndrQuery* queries
 );
+
+#include <ae2f/Bmp/Idx.h>
+
+typedef struct Rdvtr_Rndr {
+    ae2f_struct ae2f_rBmpIdx mIdx;
+    int8_t* mField;
+    Rdvtr_RndrQuery mQuery;
+} Rdvtr_Rndr;
 
 #endif
