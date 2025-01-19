@@ -1,10 +1,12 @@
+#ifndef Rdvtr_Ansi_h
+#define Rdvtr_Ansi_h
+
 #include <ae2f/Call.h>
 #include <ae2f/Cast.h>
 #include <stdint.h>
 
 /// @brief Not found
 #define Rdvtr_AnsiMeasureNFOUND ((int32_t)0)
-
 
 /// @warning
 /// Notice this code will find only one ANSI code.
@@ -21,3 +23,4 @@ ae2f_extern ae2f_SHAREDCALL int32_t Rdvtr_AnsiMeasure(
     int32_t* firstpadret_optional
 );
 
+#endif

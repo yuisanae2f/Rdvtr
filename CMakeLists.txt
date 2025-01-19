@@ -17,16 +17,21 @@ endif()
 
 if(NOT TARGET ${PROJECT_NAME})
     ae2f_CoreLibFetch(ae2f Core main)
-    message(${PROJECT_NAME})    
+    ae2f_CoreLibFetch(ae2f Ds main)
+    
+    message(${PROJECT_NAME})
     ae2f_CoreLibTent(
         Rdvtr ${ae2f_LIBPREFIX} include Rdvtr
         "include/Rdvtr/Ansi.h"
         "src/Ansi.c"
         
         "include/Rdvtr/Rndr.h"
-        "src/Rndr.cpp"
+        "include/Rdvtr/Rndr.hpp"
+        "src/Rndr.c"
     )
     target_link_libraries(Rdvtr PUBLIC Core)
+    target_link_libraries(Rdvtr PUBLIC Ds)
 
     ae2f_CoreTestTent(Rdvtr test)
 endif()
+
