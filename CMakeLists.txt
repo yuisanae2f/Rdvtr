@@ -32,6 +32,14 @@ if(NOT TARGET ${PROJECT_NAME})
     target_link_libraries(Rdvtr PUBLIC Core)
     target_link_libraries(Rdvtr PUBLIC Ds)
 
+    find_package(SDL2)
+    if(${SDL2_FOUND})
+        target_link_libraries(Rdvtr PUBLIC SDL2::SDL2)
+    else()
+        ae2f_CoreLibFetch(libsdl-org SDL SDL2)
+        target_link_libraries(Rdvtr SDL2)
+    endif()
+
     ae2f_CoreTestTent(Rdvtr test)
 endif()
 
