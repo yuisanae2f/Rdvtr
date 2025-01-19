@@ -1,6 +1,6 @@
-#include <Rdvtr/Rndr.h>
 #include <stdio.h>
 #include <string>
+#include <Rdvtr/Rndr.h>
 
 int main() {
     size_t len;
@@ -20,7 +20,7 @@ int main() {
         );
         return 1;
     }
-    ae2f::Ds::Arr::cOwner::Linear_t<Rdvtr_RndrQueryEl> query;
+    Rdvtr_RndrQueryOwnLinear query;
     
     query.Resize(2);
     query.Write(0, Rdvtr_RndrQueryEl {

@@ -23,13 +23,36 @@ typedef struct Rdvtr_RndrQueryEl {
     size_t Pad;
 } Rdvtr_RndrQueryEl;
 
-/// @brief List type for Rndr Query.
+
+/// @brief
+/// # It does not own the memory. 
+/// List type for Rndr Query.
 /// For a handler, see @see ae2f::Ds::Arr::cRefer \n 
 /// For an element, see @see Rdvtr_RndrQueryEl
 typedef 
     ae2f_WhenC(ae2f_struct ae2f_cDsAllocRef)
     ae2f_WhenCXX(ae2f::Ds::Arr::cRefer<Rdvtr_RndrQueryEl>)
 Rdvtr_RndrQuery;
+
+/// @brief
+/// # This type is already specified.
+/// List type for Rndr Query.
+/// For a handler, see @see ae2f::Ds::Arr::cRefer \n 
+/// For an element, see @see Rdvtr_RndrQueryEl
+typedef 
+    ae2f_WhenC(ae2f_struct ae2f_cDsAllocRef)
+    ae2f_WhenCXX(ae2f::Ds::Arr::cOwner::Linear_t<Rdvtr_RndrQueryEl>)
+Rdvtr_RndrQueryOwnLinear;
+
+/// @brief
+/// # You will need to specify(implement) the methods.
+/// List type for Rndr Query.
+/// For a handler, see @see ae2f::Ds::Arr::cRefer \n 
+/// For an element, see @see Rdvtr_RndrQueryEl
+typedef 
+    ae2f_WhenC(ae2f_struct ae2f_cDsAllocRef)
+    ae2f_WhenCXX(ae2f::Ds::Arr::xrOwner<Rdvtr_RndrQueryEl>)
+Rdvtr_RndrQueryOwnInterface;
 
 /// @warning
 /// This function does not consider the param [in]'s length.
